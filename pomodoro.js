@@ -44,10 +44,11 @@ export default function initPomodoro() {
   function displayPomodoro() {
     buttonsStart.forEach((item) => {
       if (item !== btnPomodoro) {
-        item.style.animation = "noClick 0.3s forwards";
+        item.style.animation = "Close 0.7s forwards";
       }
     });
     btnPomodoro.style.animation = "toClick 3s forwards";
+    console.log(window);
     setTimeout(() => {
       displayStart.style.display = "none";
       display.style.display = "flex";
@@ -143,17 +144,10 @@ export default function initPomodoro() {
   }
   function closeConfig() {
     displayConfig.style.display = "none";
-    console.log("aconteceu");
-    console.log(type);
     if (type === "focus") {
       focusTimer();
     } else {
       breakTimer();
     }
-    /*const numberFoco = document.querySelector(".numberFoco").value;
-    const numberBreak = document.querySelector(".numberBreak").value;
-    console.log(type);
-    console.log(numberFoco);
-    console.log(numberBreak);*/
   }
 }
