@@ -2,25 +2,24 @@ export default function initPomodoro() {
   const btnPomodoro = document.querySelector("[data-pomodoro]");
   const buttonsStart = document.querySelectorAll(".display-start .btn");
   const displayStart = document.querySelector(".display-start");
-  const display = document.querySelector(".container");
+  const displayApp = document.querySelector(".containerApp");
   const settings = document.querySelector(".settings");
   const title = document.querySelector(".title h1");
-  const minutos = document.querySelector("[data-minutos]");
-  const segundos = document.querySelector("[data-segundos]");
-  const iniciar = document.querySelector("[data-iniciar]");
-  const pausar = document.querySelector("[data-pausar]");
-  const zerar = document.querySelector("[data-zerar]");
-  const settingsTime = document.querySelector("[data-config]");
+  const minutes = document.querySelector("[data-minutes]");
+  const seconds = document.querySelector("[data-seconds]");
+  const start = document.querySelector("[data-start]");
+  const pause = document.querySelector("[data-pause]");
+  const reset = document.querySelector("[data-reset]");
+  const btnSettings = document.querySelector("[data-config]");
   const displayConfig = document.querySelector(".displayConfig");
   const btnClose = document.querySelector(".btnClose");
-  const btnSetConfig = document.querySelector("#confirma");
-  console.log(btnSetConfig);
+  const btnConfirm = document.querySelector("#confirm");
 
   btnPomodoro.addEventListener("click", displayPomodoro);
-  iniciar.addEventListener("click", iniciarTimer);
-  pausar.addEventListener("click", pausarTimer);
-  zerar.addEventListener("click", zerarTimer);
-  settingsTime.addEventListener("click", showConfig);
+  start.addEventListener("click", startTimer);
+  pause.addEventListener("click", pauseTimer);
+  reset.addEventListener("click", resetTimer);
+  btnSettings.addEventListener("click", showConfig);
   btnClose.addEventListener("click", closeConfig);
 
   const buttonFocus = document.createElement("button");
@@ -34,7 +33,7 @@ export default function initPomodoro() {
   buttonBreak.classList.add("btn", "break");
   settings.appendChild(buttonBreak);
   buttonBreak.addEventListener("click", breakTimer);
-  btnSetConfig.addEventListener("click", closeConfig);
+  btnConfirm.addEventListener("click", closeConfig);
 
   title.innerText = "Pomodoro";
 
@@ -51,47 +50,45 @@ export default function initPomodoro() {
     console.log(window);
     setTimeout(() => {
       displayStart.style.display = "none";
-      display.style.display = "flex";
+      displayApp.style.display = "flex";
     }, 2000);
   }
 
-  function iniciarTimer() {
-    console.log("iniciar");
+  function startTimer() {
     timer = setInterval(() => {
       seg--;
-      if (seg <= 0) {
+      if (seg < 0) {
         seg = 59;
         min--;
-        minutos.innerText = min;
+        minutes.innerText = min;
       }
       if (seg < 10 && seg >= 0) {
-        segundos.innerText = `0${seg}`;
+        seconds.innerText = `0${seg}`;
       } else {
-        segundos.innerText = seg;
+        seconds.innerText = seg;
       }
 
-      if (min === 0 && seg === 0) {
-        segundos.innerText = "00";
-        minutos.innerText = "0";
-        clearInterval(timer);
-        pausar.setAttribute("disabled", "");
+      if (min < 0) {
+        finish(type);
       }
-    }, 1000);
-    iniciar.setAttribute("disabled", "");
-    pausar.removeAttribute("disabled");
-    zerar.removeAttribute("disabled");
+
+      console.log(min, seg, type);
+    }, 100);
+    start.setAttribute("disabled", "");
+    pause.removeAttribute("disabled");
+    reset.removeAttribute("disabled");
   }
 
-  function pausarTimer() {
+  function pauseTimer() {
     clearInterval(timer);
-    iniciar.removeAttribute("disabled");
-    pausar.setAttribute("disabled", "");
+    start.removeAttribute("disabled");
+    pause.setAttribute("disabled", "");
   }
 
-  function zerarTimer() {
-    iniciar.removeAttribute("disabled");
-    zerar.setAttribute("disabled", "");
-    pausar.setAttribute("disabled", "");
+  function resetTimer() {
+    start.removeAttribute("disabled");
+    reset.setAttribute("disabled", "");
+    pause.setAttribute("disabled", "");
     if (type === "focus") {
       focusTimer();
     } else {
@@ -99,12 +96,20 @@ export default function initPomodoro() {
     }
   }
 
+  function finish(type) {
+    minutes.innerText = "0";
+    seconds.innerText = "00";
+    clearInterval(timer);
+    pause.setAttribute("disabled", "");
+    type === "focus" ? alert("Take a break") : alert("Focus Time!!!!");
+  }
+
   function focusTimer() {
-    min = document.querySelector(".numberFoco").value;
+    min = document.querySelector(".numberFocus").value;
     seg = 0;
     type = "focus";
-    minutos.innerText = min;
-    segundos.innerText = "00";
+    minutes.innerText = min;
+    seconds.innerText = "00";
     changeAttribute(type);
     changeTimer(min, seg);
   }
@@ -119,22 +124,22 @@ export default function initPomodoro() {
 
   function changeTimer(min) {
     clearInterval(timer);
-    minutos.innerText = min;
-    segundos.innerText = "00";
-    iniciar.removeAttribute("disabled");
+    minutes.innerText = min;
+    seconds.innerText = "00";
+    start.removeAttribute("disabled");
   }
 
   function changeAttribute(type) {
     if (type === "focus") {
       buttonFocus.setAttribute("disabled", "");
       buttonBreak.removeAttribute("disabled", "");
-      display.classList.remove("breakActive");
-      display.classList.add("focusActive");
+      displayApp.classList.remove("breakActive");
+      displayApp.classList.add("focusActive");
     } else {
       buttonBreak.setAttribute("disabled", "");
       buttonFocus.removeAttribute("disabled", "");
-      display.classList.remove("focusActive");
-      display.classList.add("breakActive");
+      displayApp.classList.remove("focusActive");
+      displayApp.classList.add("breakActive");
     }
   }
 
