@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/18f1061d8a.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="display-start">
+      <button class="btn" data-pomodoro>Pomodoro</button>
+      <button class="btn" data-cronometro>Cronometro</button>
+      <button class="btn" data-timer>Timer</button>
+    </div>
+    <div class="container">
+      <div class="title">
+        <h1>Pomodoro</h1>
+      </div>
+      <section class="card">
+        <div class="settings">
+          <button class="btn config" data-config>
+            <i class="fas fa-cog"></i>
+          </button>
+          <div class="displayConfig">
+            <div class="btnClose"><i class="fas fa-times-circle"></i></div>
+            <h3>Tempo (Minutos)</h3>
+            <div class="labelFlex">
+              <label for="pomodoro">Pomodoro</label>
+              <label for="break">Descanço</label>
+            </div>
+            <div class="inputNumber">
+              <input type="number" class="numberFoco" value="25" min="0" />
+              <input type="number" class="numberBreak" value="5" min="0" />
+            </div>
+            <input type="button" value="Confirmar" class="btn" id="confirma" />
+          </div>
+        </div>
+
+        <div class="timer" data-timer>
+          <span data-minutos></span>
+          <p>:</p>
+          <span data-segundos></span>
+        </div>
+        <div class="buttons">
+          <button class="btn" data-iniciar>Iniciar</button>
+          <button class="btn" data-pausar>Pausar</button>
+          <button class="btn" data-zerar>Zerar</button>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
