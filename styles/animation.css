@@ -61,16 +61,6 @@
   }
 }
 
-@keyframes Show {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes Close {
   to {
     opacity: 0;

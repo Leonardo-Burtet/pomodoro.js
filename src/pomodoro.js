@@ -1,6 +1,5 @@
 export default function initPomodoro() {
   const btnPomodoro = document.querySelector("[data-pomodoro]");
-  const buttonsStart = document.querySelectorAll(".display-start .btn");
   const displayStart = document.querySelector(".display-start");
   const displayApp = document.querySelector(".containerApp");
   const settings = document.querySelector(".settings");
@@ -55,11 +54,6 @@ export default function initPomodoro() {
   focusTimer();
 
   function displayPomodoro() {
-    buttonsStart.forEach((item) => {
-      if (item !== btnPomodoro) {
-        item.style.animation = "Close 0.7s forwards";
-      }
-    });
     btnPomodoro.style.animation = "toClick 3s forwards";
     setTimeout(() => {
       displayStart.style.display = "none";
@@ -157,7 +151,7 @@ export default function initPomodoro() {
   }
 
   function showConfig() {
-    displayConfig.style.animation = "Show 0.5s";
+    displayConfig.style.animation = "toShow 0.5s";
     displayConfig.style.display = "block";
   }
 
