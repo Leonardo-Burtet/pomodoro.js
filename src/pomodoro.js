@@ -53,6 +53,7 @@ export default function initPomodoro() {
 
   let timer, min, seg, type;
   focusTimer();
+
   function displayPomodoro() {
     buttonsStart.forEach((item) => {
       if (item !== btnPomodoro) {

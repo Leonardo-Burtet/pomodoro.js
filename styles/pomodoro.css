@@ -1,0 +1,26 @@
+/*class to change color*/
+
+.focusActive {
+  background-color: #7a220e;
+}
+
+.breakActive {
+  background-color: #003a95;
+}
+
+.settings {
+  display: grid;
+  grid-template-areas: "foco config break";
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2px;
+}
+
+.settings .config {
+  grid-area: config;
+}
+.settings .focus {
+  grid-area: foco;
+}
+.settings .break {
+  grid-area: break;
+}

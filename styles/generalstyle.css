@@ -99,23 +99,13 @@ body {
   background-color: #000000;
 }
 
-/*class to change color*/
-
-.focusActive {
-  background-color: #7a220e;
-}
-
-.breakActive {
-  background-color: #003a95;
-}
-
 /*Display de Configuração*/
 
 .displayConfig {
   position: absolute;
   background-color: rgb(211, 211, 211);
   width: 90%;
-  height: 50%;
+  height: 60%;
   border-radius: 5px;
   padding: 15px;
   text-align: center;
@@ -172,23 +162,6 @@ body {
   border: none;
 }
 
-.settings {
-  display: grid;
-  grid-template-areas: "foco config break";
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2px;
-}
-
-.settings .config {
-  grid-area: config;
-}
-.settings .focus {
-  grid-area: foco;
-}
-.settings .break {
-  grid-area: break;
-}
-
 /* Media Query */
 
 @media (max-width: 640px) {
@@ -224,86 +197,10 @@ body {
     padding: 1px;
   }
 
+  .displayConfig {
+    height: 50%;
+  }
   .displayConfig input[type="button"] {
     font-size: 0.8em;
-  }
-}
-
-/*Animações*/
-
-@keyframes onload {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1) rotate3d(0, 0, 1, 360deg);
-  }
-}
-
-@keyframes onhover {
-  0% {
-    transform: scale(1);
-  }
-
-  25% {
-    transform: rotate3d(0, 0, 1, 15deg) scale(1.2);
-  }
-  50% {
-    transform: rotate3d(0, 0, -1, 15deg);
-  }
-
-  75% {
-    transform: rotate3d(0, 0, 1, 15deg);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes toClick {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-  75% {
-    transform: scale(0.5) rotate(360deg);
-  }
-  100% {
-    transform: scale(0) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-@keyframes toShow {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes Show {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes Close {
-  to {
-    opacity: 0;
   }
 }
