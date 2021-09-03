@@ -126,8 +126,12 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 10px;
+  padding: 2px;
   color: #b93939;
+}
+
+.btnClose:hover {
+  color: #7a220e;
 }
 .displayConfig h3 {
   font-size: 1.5em;
@@ -138,7 +142,7 @@ body {
 
 .displayConfig label {
   font-size: 1em;
-  padding-right: 15px;
+  padding-right: 5px;
   padding-bottom: 5px;
   color: #000000;
 }
@@ -161,8 +165,9 @@ body {
 }
 
 .displayConfig input[type="button"] {
+  text-transform: uppercase;
   margin-top: 5px;
-  padding: 5px;
+  padding: 10px 15px;
   border-radius: 5px;
   border: none;
 }
@@ -210,18 +215,13 @@ body {
     width: 100%;
   }
 
-  .settings {
-    flex-direction: row;
-  }
   .settings .btn {
     font-size: 1em;
     margin: 1px;
   }
   .settings .config {
-    background-color: transparent;
     font-size: 0.7em;
     padding: 1px;
-    width: 100%;
   }
 
   .displayConfig input[type="button"] {

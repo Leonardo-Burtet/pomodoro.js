@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pomodoro Timer</title>
+    <title>Pomodoro-Cronometer-Timer</title>
     <link rel="stylesheet" href="style.css" />
     <script
       src="https://kit.fontawesome.com/18f1061d8a.js"
@@ -14,12 +14,12 @@
   <body>
     <div class="display-start">
       <button class="btn" data-pomodoro>Pomodoro</button>
-      <button class="btn" data-cronometro>Cronometro</button>
+      <button class="btn" data-cronometer>Cronometer</button>
       <button class="btn" data-timer>Timer</button>
     </div>
     <div class="containerApp">
       <div class="title">
-        <h1>Pomodoro</h1>
+        <h1></h1>
       </div>
       <section class="card">
         <div class="settings">
@@ -29,13 +29,16 @@
           <div class="displayConfig">
             <div class="btnClose"><i class="fas fa-times-circle"></i></div>
             <h3>Time (Minutes)</h3>
-            <div class="labelFlex">
-              <label for="focus">Focus</label>
-              <label for="break">Break</label>
+            <div class="labelFlex" data-confignames>
+              <label for="firstButtonConfig" class="firstButtonConfig"></label>
+              <label
+                for="secondButtonConfig"
+                class="secondButtonConfig"
+              ></label>
             </div>
             <div class="inputNumber">
-              <input type="number" class="numberFocus" value="25" min="0" />
-              <input type="number" class="numberBreak" value="5" min="0" />
+              <input type="number" class="firstInputNumber" min="0" />
+              <input type="number" class="secondInputNumber" min="0" />
             </div>
             <input type="button" value="confirm" class="btn" id="confirm" />
           </div>
@@ -48,7 +51,7 @@
         </div>
         <div class="buttons">
           <button class="btn" data-start>Start</button>
-          <button class="btn" data-pause>Pause<Pbutton>
+          <button class="btn" data-pause>Pause</button>
           <button class="btn" data-reset>Reset</button>
         </div>
       </section>

@@ -44,13 +44,6 @@ export default function initPomodoro() {
       : (element.innerText = "Break")
   );
 
-  const inputNumberConfig = document.querySelectorAll(".inputNumber input");
-  inputNumberConfig.forEach((element) =>
-    element.className === "firstInputNumber"
-      ? element.setAttribute("value", 25)
-      : element.setAttribute("value", 5)
-  );
-
   let timer, min, seg, type;
   focusTimer();
   function displayPomodoro() {
@@ -60,6 +53,7 @@ export default function initPomodoro() {
       }
     });
     btnPomodoro.style.animation = "toClick 3s forwards";
+    console.log(window);
     setTimeout(() => {
       displayStart.style.display = "none";
       displayApp.style.display = "flex";
