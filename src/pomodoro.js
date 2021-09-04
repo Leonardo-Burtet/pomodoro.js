@@ -78,8 +78,6 @@ export default function initPomodoro() {
       if (min < 0) {
         finish(type);
       }
-
-      console.log(min, seg, type);
     }, 1000);
     start.setAttribute("disabled", "");
     pause.removeAttribute("disabled");
