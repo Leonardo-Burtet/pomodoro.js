@@ -80,7 +80,7 @@ export default function initPomodoro() {
       }
 
       console.log(min, seg, type);
-    }, 100);
+    }, 1000);
     start.setAttribute("disabled", "");
     pause.removeAttribute("disabled");
     reset.removeAttribute("disabled");
