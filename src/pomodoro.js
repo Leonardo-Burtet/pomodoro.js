@@ -35,6 +35,28 @@ export default function initPomodoro() {
   let seg;
   let type;
 
+  function pauseTimer() {
+    clearInterval(timer);
+    start.removeAttribute('disabled');
+    pause.setAttribute('disabled', '');
+  }
+
+  function finish() {
+    minutes.innerText = '0';
+    seconds.innerText = '00';
+    clearInterval(timer);
+    pause.setAttribute('disabled', '');
+    // type === 'focus' ? alert('Take a break') : alert('Focus Time!!!!');
+  }
+
+  function alarm(type) {
+    if (type === 'focus') {
+      alert('Take a break');
+    } else {
+      alert('Focus Time!!!');
+    }
+  }
+
   function startTimer() {
     timer = setInterval(() => {
       seg -= 1;
@@ -59,27 +81,6 @@ export default function initPomodoro() {
     reset.removeAttribute('disabled');
   }
 
-  function pauseTimer() {
-    clearInterval(timer);
-    start.removeAttribute('disabled');
-    pause.setAttribute('disabled', '');
-  }
-
-  function finish() {
-    minutes.innerText = '0';
-    seconds.innerText = '00';
-    clearInterval(timer);
-    pause.setAttribute('disabled', '');
-    // type === 'focus' ? alert('Take a break') : alert('Focus Time!!!!');
-  }
-
-  function alarm(type) {
-    if (type === 'focus') {
-      alert('Take a break');
-    } else {
-      alert('Focus Time!!!');
-    }
-  }
   function changeTimer(min) {
     clearInterval(timer);
     minutes.innerText = min;
@@ -118,6 +119,7 @@ export default function initPomodoro() {
     changeTimer(min, seg);
     changeAttribute(type);
   }
+
   function resetTimer() {
     start.removeAttribute('disabled');
     reset.setAttribute('disabled', '');
@@ -128,6 +130,7 @@ export default function initPomodoro() {
       breakTimer();
     }
   }
+
   function displayPomodoro() {
     btnPomodoro.style.animation = 'toClick 3s forwards';
     setTimeout(() => {
